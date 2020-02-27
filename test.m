@@ -1,4 +1,4 @@
-%%
+%% Läs in ljudfiler från en katalog
 
 a = dir('*.wav');
 %%
