@@ -1,6 +1,9 @@
 %% Läs in ljudfiler från en katalog
 
-a = dir('*.wav');
+%datafolder = '/Users/kalle/Documents/projekt/filkand_2020_fosterdiagnostik/dataset1';
+datafolder = '/Users/kalle/Documents/projekt/filkand_2020_fosterdiagnostik/dataset1';
+
+a = dir(fullfile(datafolder,'*.wav'));
 %%
 if 1,
     clear facit
@@ -25,7 +28,7 @@ end
 %%
 if 1,
     for i = 1:length(a);
-        [y,fs]=audioread(a(i).name);
+        [y,fs]=audioread(fullfile(datafolder,a(i).name));
         
         %     figure(1);
         %     plot(y(:,1));
@@ -179,7 +182,7 @@ imagesc(reshape(tmp(2,:),32,32));
 
 %%
 
-[y,fs]=audioread(a(4).name);
+[y,fs]=audioread(fullfile(datafolder,a(4).name));
 y = y(:,1);
 s=spectrogram(y,1024,1008,1024);
 x = abs(s(1:50,:));
