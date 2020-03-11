@@ -8,9 +8,8 @@
 %Johan
 datafolder = 'C:\Users\Johan\OneDrive\Skrivbord\Dataset_ljudfiler';
 
-
 %Henrik
-%datafolder = 
+%datafolder = '/Users/97hen/Desktop/Dataset_ljudfiler';
 
 a = dir(fullfile(datafolder,'*.wav'));
 
