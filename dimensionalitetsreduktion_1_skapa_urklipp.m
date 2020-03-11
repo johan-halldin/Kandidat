@@ -4,6 +4,10 @@
 datafolder = '/Users/kalle/Documents/projekt/kand_2020_fosterdiagnostik/dataset1';
 datafolder = '/Users/kalle/Documents/projekt/kand_2020_fosterdiagnostik/dataset2';
 
+
+%Henrik
+datafolder = 
+
 a = dir(fullfile(datafolder,'*.wav'));
 
 %% Läs in varje ljudfil och gör inledande analys
