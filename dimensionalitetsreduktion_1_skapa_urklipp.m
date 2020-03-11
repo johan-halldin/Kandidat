@@ -6,11 +6,11 @@
 %datafolder = '/Users/kalle/Documents/projekt/kand_2020_fosterdiagnostik/dataset2';
 
 %Johan
-datafolder = '/Users/kalle/Documents/projekt/kand_2020_fosterdiagnostik/dataset2';
+datafolder = 'C:\Users\Johan\OneDrive\Skrivbord\Dataset_ljudfiler';
 
 
 %Henrik
-datafolder = 
+%datafolder = 
 
 a = dir(fullfile(datafolder,'*.wav'));
 
@@ -49,8 +49,9 @@ if 1,
         colormap(gray);
         axis xy
         
+        
         x = abs(s(1:50,:));
-        x = x.*(((1:50)')*ones(1,size(x,2)));
+        x = x.*(((1:50)')*ones(1,size(x,2))); % vikta mer linj?rt fr?n toppen
         figure(1); subplot(2,1,2); hold off; plot(sum(x));
         z = sum(x);
         xx = -1000:1000;
@@ -71,7 +72,7 @@ if 1,
         %         else
         %             facit(i).lokmax = [];
         %         end
-        pause(0.1);
+        %pause(0.1);
         
     end;
     
@@ -92,7 +93,7 @@ end;
 %% H?r g?rs urklippen. Jag skapara bilder av storlek 50 x 150 
 % f?r varje topp. Dessa sparas i en variable 
 % pos av storlek 50 x 150 x 1 x N
-% d?r N ?r antalat urklippta toppar. Cirka 1400 stycken
+% d?r N ?r antalet urklippta toppar. Cirka 1400 stycken
 
 
 pos = zeros(50,150,1,0);
@@ -111,7 +112,8 @@ for i = 1:length(a);
     if 1,
         for mid = facit(i).lokmax(2:(end-1)),
             % provar att hoppa ?ver f?rsta och sista
-            if (mid>(w2+10)) & (mid< (length(x)-w2-10)),
+            % sista tar inte h?nsyn till att sista delen av signalen ?r tyst
+            if (mid>(w2+10)) & (mid< (length(x)-w2-10)), 
                 cutout = x(1:50,(mid-w2):(mid+w2-1));
                 cutout = conv2(cutout,ones(1,20)/20,'same');
                 cutout = cutout(:,10:20:end);
@@ -120,14 +122,14 @@ for i = 1:length(a);
                 figure(3); clf;
                 imagesc(cutout);
                 title([num2str(i) ' - ' num2str(mid)]);
-                pause(0.1);
+                % pause(0.1);
                 pos = cat(4,pos,cutout);
             end
         end
     end
 end
 
-%% Bilderna i pos ?r ganska brusiga. 
+%% Bilderna i pos ?r ganska brusiga. imagesc
 % Kanske ?r det bra att titta p? lite utj?mnade bilder
 % H?r skapas pos_smooth med s?dana utsmetade bilder.  
 
