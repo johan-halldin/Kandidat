@@ -1,26 +1,30 @@
-%% Läs in ljudfilsnamn från en katalog
+%% L?s in ljudfilsnamn fr?n en katalog
 
+%Kalle
 %datafolder = '/Users/kalle/Documents/projekt/filkand_2020_fosterdiagnostik/dataset1';
-datafolder = '/Users/kalle/Documents/projekt/kand_2020_fosterdiagnostik/dataset1';
+%datafolder = '/Users/kalle/Documents/projekt/kand_2020_fosterdiagnostik/dataset1';
+%datafolder = '/Users/kalle/Documents/projekt/kand_2020_fosterdiagnostik/dataset2';
+
+%Johan
 datafolder = '/Users/kalle/Documents/projekt/kand_2020_fosterdiagnostik/dataset2';
 
 a = dir(fullfile(datafolder,'*.wav'));
 
-%% Läs in varje ljudfil och gör inledande analys
-% bl a räkna ut vilken kanal som är dominant. 
+%% L?s in varje ljudfil och g?r inledande analys
+% bl a r?kna ut vilken kanal som ?r dominant. 
 
 if 1,
     for i = 1:length(a);
         [y,fs]=audioread(fullfile(datafolder,a(i).name));
         
-        % Räkna ut vilket som är framåtkanalen?
-        % Hur då?
-        % Första försöket. Gissa att den med mest energi
-        % är framåtkanalen.
+        % R?kna ut vilket som ?r fram?tkanalen?
+        % Hur d??
+        % F?rsta f?rs?ket. Gissa att den med mest energi
+        % ?r fram?tkanalen.
         energi = [norm(y(:,1)) norm(y(:,2))];
         facit(i).energi = energi;
         [sortv,sorti]=sort(-energi);
-        facit(i).kanal = sorti;  % Här är första talet den dominanta kanalen
+        facit(i).kanal = sorti;  % H?r ?r f?rsta talet den dominanta kanalen
         
         
         %     figure(1);
@@ -56,7 +60,7 @@ if 1,
         figure(1); subplot(2,1,1); hold on;
         plot([lokmax],10*ones(size(lokmax)),'y*');
         
-        facit(i).lokmax = lokmax; % Är är index för topparna
+        facit(i).lokmax = lokmax; % ?r ?r index f?r topparna
         
         %         if facit(i).class == 1,
         %             facit(i).lokmax = lokmax;
@@ -69,8 +73,8 @@ if 1,
     
 end;
 
-%% Liten test för att se om avståndet mellan två toppar är ungefär samma
-% Använd medianen av avstånden som skattning av storleken.
+%% Liten test f?r att se om avst?ndet mellan tv? toppar ?r ungef?r samma
+% Anv?nd medianen av avst?nden som skattning av storleken.
 
 for i = 1:length(a);
     %     figure(1);
@@ -81,10 +85,10 @@ for i = 1:length(a);
     facit(i).period = median(diff(facit(i).lokmax));
 end;
 
-%% Här görs urklippen. Jag skapara bilder av storlek 50 x 150 
-% för varje topp. Dessa sparas i en variable 
+%% H?r g?rs urklippen. Jag skapara bilder av storlek 50 x 150 
+% f?r varje topp. Dessa sparas i en variable 
 % pos av storlek 50 x 150 x 1 x N
-% där N är antalat urklippta toppar. Cirka 1400 stycken
+% d?r N ?r antalat urklippta toppar. Cirka 1400 stycken
 
 
 pos = zeros(50,150,1,0);
@@ -102,7 +106,7 @@ for i = 1:length(a);
     %end
     if 1,
         for mid = facit(i).lokmax(2:(end-1)),
-            % provar att hoppa över första och sista
+            % provar att hoppa ?ver f?rsta och sista
             if (mid>(w2+10)) & (mid< (length(x)-w2-10)),
                 cutout = x(1:50,(mid-w2):(mid+w2-1));
                 cutout = conv2(cutout,ones(1,20)/20,'same');
@@ -119,9 +123,9 @@ for i = 1:length(a);
     end
 end
 
-%% Bilderna i pos är ganska brusiga. 
-% Kanske är det bra att titta på lite utjämnade bilder
-% Här skapas pos_smooth med sådana utsmetade bilder.  
+%% Bilderna i pos ?r ganska brusiga. 
+% Kanske ?r det bra att titta p? lite utj?mnade bilder
+% H?r skapas pos_smooth med s?dana utsmetade bilder.  
 
 if 1,
     pos_smooth = pos;
@@ -129,7 +133,7 @@ if 1,
         pos_smooth(:,:,:,k)=conv2(pos_smooth(:,:,:,k),ones(5,5)/25,'same');
     end
 end
-%% Här är ett montage av alla bilder i pos
+%% H?r ?r ett montage av alla bilder i pos
 
 figure(4);
 subplot(1,1,1)
