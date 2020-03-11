@@ -6,11 +6,12 @@
 %datafolder = '/Users/kalle/Documents/projekt/kand_2020_fosterdiagnostik/dataset2';
 
 %Johan
-datafolder = '/Users/kalle/Documents/projekt/kand_2020_fosterdiagnostik/dataset2';
+%datafolder = '/Users/kalle/Documents/projekt/kand_2020_fosterdiagnostik/dataset2';
 
 
 %Henrik
-datafolder = 
+datafolder = '/Users/97hen/Desktop/Dataset_ljudfiler';
+
 
 a = dir(fullfile(datafolder,'*.wav'));
 
