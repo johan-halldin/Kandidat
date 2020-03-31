@@ -39,6 +39,7 @@ end
 
 figure(7);
 plot(code(:,1),code(:,2),'*');
+text(code(:,1),code(:,2), string(index));
 title('Using two dimensions');
 
 figure(8);

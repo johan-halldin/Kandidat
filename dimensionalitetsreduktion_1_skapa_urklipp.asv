@@ -132,6 +132,8 @@ for i = 1:length(a);
     end
 end
 
+index = 
+
 %% Bilderna i pos ?r ganska brusiga. imagesc
 % Kanske ?r det bra att titta p? lite utj?mnade bilder
 % H?r skapas pos_smooth med s?dana utsmetade bilder.  

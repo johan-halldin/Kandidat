@@ -1,8 +1,9 @@
-%% Läs in ljudfiler från en katalog
+%% L?s in ljudfiler fr?n en katalog
 
 %datafolder = '/Users/kalle/Documents/projekt/filkand_2020_fosterdiagnostik/dataset1';
-datafolder = '/Users/kalle/Documents/projekt/kand_2020_fosterdiagnostik/dataset1';
-datafolder = '/Users/kalle/Documents/projekt/kand_2020_fosterdiagnostik/dataset2';
+%datafolder = '/Users/kalle/Documents/projekt/kand_2020_fosterdiagnostik/dataset1';
+%datafolder = '/Users/kalle/Documents/projekt/kand_2020_fosterdiagnostik/dataset2';
+datafolder = 'C:\Users\Johan\OneDrive\Skrivbord\Dataset_ljudfiler';
 
 a = dir(fullfile(datafolder,'*.wav'));
 %%
@@ -17,10 +18,10 @@ if 1,
     for i = 1:length(a);
         [y,fs]=audioread(fullfile(datafolder,a(i).name));
         
-        % Räkna ut vilket som är framåtkanalen?
-        % Hur då?
-        % Första försöket. Gissa att den med mest energi
-        % är framåtkanalen. 
+        % R?kna ut vilket som ?r fram?tkanalen?
+        % Hur d??
+        % F?rsta f?rs?ket. Gissa att den med mest energi
+        % ?r fram?tkanalen. 
         energi = [norm(y(:,1)) norm(y(:,2))];
         facit(i).energi = energi;
         [sortv,sorti]=sort(-energi);
@@ -101,7 +102,7 @@ for i = 1:length(a);
     %end
     if 1,
         for mid = facit(i).lokmax(2:(end-1)),
-            % provar att hoppa över första och sista
+            % provar att hoppa ?ver f?rsta och sista
             if (mid>(w2+10)) & (mid< (length(x)-w2-10)),
                 cutout = x(1:50,(mid-w2):(mid+w2-1));
                 cutout = conv2(cutout,ones(1,20)/20,'same');
@@ -189,7 +190,8 @@ for k = 1:size(pos,4);
     colormap(gray);
     imagesc(reshape(m+u(:,1:KK)*s(1:KK,1:KK)*v(k,1:KK)',50,150));
     title(num2str(k));
-    pause;
+    pause; 
+
 end
 
 %%
