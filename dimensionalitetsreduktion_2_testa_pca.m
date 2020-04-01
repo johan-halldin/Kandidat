@@ -45,6 +45,7 @@ title('Using two dimensions');
 figure(8);
 hold off;
 plot3(code(:,1),code(:,2),code(:,3),'b*');
+text(code(:,1),code(:,2), code(:,3), string(index));
 title('Using three dimensions');
 
 %% Compare original with reconstruction

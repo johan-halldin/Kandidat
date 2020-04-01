@@ -37,11 +37,11 @@ options = trainingOptions( 'adam',...
     'ValidationData',{pos,pos});
 
 if 1, 
-    %Träna denna gång och spara nät
+    %Tr?na denna g?ng och spara n?t
     net = trainNetwork(pos_smooth, pos_smooth, layers, options);
     %save trained_auto_net00004
 else
-    %Träna inte denna gång utan använd ett nät som är sparat
+    %Tr?na inte denna g?ng utan anv?nd ett n?t som ?r sparat
     load trained_auto_net00003
 end,
 
@@ -70,11 +70,13 @@ pos_reconstruct = predict(decoder,reshape(code',1,1,KK,size(code,1)));
 
 figure(7);
 plot(code(:,1),code(:,2),'*');
+text(double(code(:,1)),double(code(:,2)), string(index));
 title('Using two dimensions');
 
 figure(8);
 hold off;
 plot3(code(:,1),code(:,2),code(:,3),'b*');
+text(double(code(:,1)),double(code(:,2)),double(code(:,3)), string(index));
 title('Using three dimensions');
 
 %% Compare original with reconstruction
