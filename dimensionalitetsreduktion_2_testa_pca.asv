@@ -34,15 +34,15 @@ for k = 1:min(KK,15);
     imagesc(reshape(model.u(:,k),50,150));
 end
 
-%% Plottar och färgkodar efter klass
+%% Plottar efter klasss
 
 figure(7);
 hold on
 for dot = 1:length(index)
 
-switch index(2,dot) %letar upp klass i index
+switch index(dot)
     case 0
-        plot(code(dot,1), code(dot,2),'+g') %Normalt värde
+        plot(code(dot,1), code(dot,2),'+g')
     case 1
         plot(code(dot,1),code(dot,2),'+b');
     case 2

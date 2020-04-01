@@ -13,7 +13,7 @@ datafolder = '/Users/97hen/Desktop/Dataset_ljudfiler';
 sheet = '/Users/97hen/Desktop/matlab_sheet';
 
 a = dir(fullfile(datafolder,'*.wav'));
-sheetNums = xlsread(sheet, 'B:B');    %läser in klasserna från excellfil
+sheetNums = xlsread(sheet, 'B:B');    %läser in klasserna från excellfin
 
 %% L?s in varje ljudfil och g?r inledande analys
 % bl a r?kna ut vilken kanal som ?r dominant. 
@@ -130,11 +130,12 @@ for i = 1:length(a);
                 % pause(0.1);
                 pos = cat(4,pos,cutout);
                 index(1,end + 1) = i;
-                index(2,a) = sheetNums(a);
+                index(2,a
             end
         end
     end
 end
+index(2,:) = sheetNums; 
 
 %% Bilderna i pos ?r ganska brusiga. imagesc
 % Kanske ?r det bra att titta p? lite utj?mnade bilder
