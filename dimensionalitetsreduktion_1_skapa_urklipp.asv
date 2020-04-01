@@ -6,14 +6,15 @@
 %datafolder = '/Users/kalle/Documents/projekt/kand_2020_fosterdiagnostik/dataset2';
 
 %Johan
-%datafolder = 'C:\Users\Johan\OneDrive\Skrivbord\Dataset_ljudfiler';
+datafolder = 'C:\Users\Johan\OneDrive\Skrivbord\Dataset_ljudfiler';
 
 %Henrik
-datafolder = '/Users/97hen/Desktop/Dataset_ljudfiler';
-sheet = '/Users/97hen/Desktop/matlab_sheet';
+%datafolder = '/Users/97hen/Desktop/Dataset_ljudfiler';
+%sheet = '/Users/97hen/Desktop/matlab_sheet';
+sheet = 'C:\Users\Johan\OneDrive\Skrivbord\Kandidat\Klasser';
 
 a = dir(fullfile(datafolder,'*.wav'));
-sheetNums = xlsread(sheet, 'B:B');    %läser in klasserna från excellfin
+sheetNums = xlsread(sheet, 'B:B');    %l?ser in klasserna fr?n excellfil
 
 %% L?s in varje ljudfil och g?r inledande analys
 % bl a r?kna ut vilken kanal som ?r dominant. 
@@ -99,7 +100,6 @@ end;
 
 pos = zeros(50,150,1,0);
 %neg = zeros(32,32,1,0);
-num
 index = [];
 
 
@@ -129,13 +129,13 @@ for i = 1:length(a);
                 title([num2str(i) ' - ' num2str(mid)]);
                 % pause(0.1);
                 pos = cat(4,pos,cutout);
-                index(1,end + 1) = i;
-                index(2,a
+                p = length(index)
+                index(1,p) = i;
+                index(2,p) = sheetNums(i);
             end
         end
     end
 end
-index(2,:) = sheetNums; 
 
 %% Bilderna i pos ?r ganska brusiga. imagesc
 % Kanske ?r det bra att titta p? lite utj?mnade bilder
