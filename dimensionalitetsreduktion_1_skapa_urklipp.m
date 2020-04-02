@@ -10,8 +10,8 @@
 %sheet = 'C:\Users\Johan\OneDrive\Skrivbord\Kandidat\Klasser';
 
 %Henrik
-datafolder = '/Users/97hen/Desktop/Kandidat/Dataset_ljudfiler';
-sheet = '/Users/97hen/Desktop/Kandidat/Klasser';
+datafolder = 'C:\Users\henri\Desktop\Kandidat\Dataset_ljudfiler';
+sheet = 'C:\Users\henri\Desktop\Kandidat\Klasser';
 
 a = dir(fullfile(datafolder,'*.wav'));
 sheetNums = xlsread(sheet, 'B:B');    %l?ser in klasserna fr?n excellfil
