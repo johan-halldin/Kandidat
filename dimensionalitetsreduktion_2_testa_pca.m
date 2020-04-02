@@ -4,7 +4,7 @@
 % code -> pos_reconstruct is decoding or unpacking of code
 
 %% Do the PCA
-KK = 3; % using 40 singular components
+KK = 10; % using 40 singular components
 model = kalle_make_pca(pos,KK);
 
 %% calculate dimensionality reduction for data
@@ -82,21 +82,45 @@ hold off
 %% Visualize code for each image
 
 figure(9);
-plot(code(:,1),code(:,2),'*r');
+plot(code(:,1),code(:,2),'*b');
 %text(code(:,1),code(:,2), string(index));
 title('Using two dimensions');
 
 figure(10);
 hold off;
 plot3(code(:,1),code(:,2),code(:,3),'b*');
+text(code(:,1),code(:,2), code(:,3), string(index(1,:)));
 %text(code(:,1),code(:,2), code(:,3), string(index));
 title('Using three dimensions');
+
+%% Plotta l?gre dimensioner
+
+figure(11);
+
+hold on
+for dot = 1:length(index)
+
+switch index(2,dot) %letar upp klass i index
+    case 0
+        plot(code(dot,4),code(dot,5), '+g'); %Normalt v?rde
+    case 1
+        plot(code(dot,4),code(dot,5),'+b');
+    case 2
+        plot(code(dot,4),code(dot,5),'+y');
+    case 3
+        plot(code(dot,4),code(dot,5),'+r');
+
+%text(code(:,1),code(:,2), string(index));
+end
+end
+
+title('Using two dimensions');
 
 %% Compare original with reconstruction
 
 %for k = 1:size(pos,4);
 for k = 50:50:500;
-    figure(9);
+    figure(12);
     subplot(1,2,1);
     colormap(gray);
     imagesc(pos(:,:,:,k));
