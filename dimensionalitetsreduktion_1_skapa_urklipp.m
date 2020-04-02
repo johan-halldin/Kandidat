@@ -104,6 +104,8 @@ index = [];
 
 
 for i = 1:length(a);
+    
+    if (i ~= 40)
     [y,fs]=audioread(fullfile(datafolder,a(i).name));
     y = y(:,facit(i).kanal(1));
     s=spectrogram(y,1024,1008,1024);
@@ -128,14 +130,19 @@ for i = 1:length(a);
                 axis xy
                 title([num2str(i) ' - ' num2str(mid)]);
                 % pause(0.1);
+                
+                
                 pos = cat(4,pos,cutout);
                 p = size(index,2) +1;
                 index(1,p) = i;
                 index(2,p) = sheetNums(i);
             end
+
+            end
         end
     end
 end
+
 
 %% Bilderna i pos ?r ganska brusiga. imagesc
 % Kanske ?r det bra att titta p? lite utj?mnade bilder
