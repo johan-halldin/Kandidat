@@ -88,15 +88,12 @@ plot(code(:,1),code(:,2),'*b');
 text(code(:,1),code(:,2), string(index(1,:)));  %plottar fr?n vilken inspelning v?rdena kommer ifr?n
 title('Using two dimensions');
 
-% figure(10);
-% hold off;
-% plot3(code(:,1),code(:,2),code(:,3),'b*');
-% <<<<<<< HEAD
-% text(code(:,1),code(:,2), code(:,3), string(index(3,:)));
-% =======
-% text(code(:,1),code(:,2), code(:,3), string(index(1,:)));   %plottar fr?n vilken inspelning v?rdena kommer ifr?n
-% >>>>>>> a512180c3683ac022f5215141cfa872d8cc6398b
-% %text(code(:,1),code(:,2), code(:,3), string(index));
+figure(10);
+hold off;
+plot3(code(:,1),code(:,2),code(:,3),'b*');
+text(code(:,1),code(:,2), code(:,3), string(index(3,:)));
+text(code(:,1),code(:,2), code(:,3), string(index(1,:)));   %plottar fr?n vilken inspelning v?rdena kommer ifr?n
+%text(code(:,1),code(:,2), code(:,3), string(index));
 title('Using three dimensions');
 
 %% Plotta l?gre dimensioner
