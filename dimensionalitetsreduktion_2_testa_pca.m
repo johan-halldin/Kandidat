@@ -84,15 +84,15 @@ hold off
 %% Visualize code for each image
 
 figure(9);
-plot(code(:,1),code(:,2),'*b');
+% plot(code(:,1),code(:,2),'*b');
 text(code(:,1),code(:,2), string(index(1,:)));  %plottar fr?n vilken inspelning v?rdena kommer ifr?n
 title('Using two dimensions');
 
 figure(10);
 hold off;
 plot3(code(:,1),code(:,2),code(:,3),'b*');
-text(code(:,1),code(:,2), code(:,3), string(index(3,:)));
-text(code(:,1),code(:,2), code(:,3), string(index(1,:)));   %plottar fr?n vilken inspelning v?rdena kommer ifr?n
+text(code(:,1),code(:,2), code(:,3), string(index(3,:)));    % plottar pulsatilt index
+%text(code(:,1),code(:,2), code(:,3), string(index(1,:)));   %plottar fr?n vilken inspelning v?rdena kommer ifr?n
 %text(code(:,1),code(:,2), code(:,3), string(index));
 title('Using three dimensions');
 
