@@ -50,8 +50,10 @@ switch index(2,dot) %letar upp klass i index
     case 3
         plot(code(dot,1), code(dot,2),'+r');
 
+        
 %text(code(:,1),code(:,2), string(index));
 end
+text(code(:,1),code(:,2), string(index(3,:)));
 end
 
 title('Using two dimensions');
@@ -89,7 +91,7 @@ title('Using two dimensions');
 figure(10);
 hold off;
 plot3(code(:,1),code(:,2),code(:,3),'b*');
-text(code(:,1),code(:,2), code(:,3), string(index(1,:)));
+text(code(:,1),code(:,2), code(:,3), string(index(3,:)));
 %text(code(:,1),code(:,2), code(:,3), string(index));
 title('Using three dimensions');
 

@@ -6,15 +6,16 @@
 %datafolder = '/Users/kalle/Documents/projekt/kand_2020_fosterdiagnostik/dataset2';
 
 %Johan
-%datafolder = 'C:\Users\Johan\OneDrive\Skrivbord\Dataset_ljudfiler';
-%sheet = 'C:\Users\Johan\OneDrive\Skrivbord\Kandidat\Klasser';
+datafolder = 'C:\Users\Johan\OneDrive\Skrivbord\Dataset_ljudfiler';
+sheet = 'C:\Users\Johan\OneDrive\Skrivbord\Kandidat\Klasser';
 
 %Henrik
-datafolder = '/Users/97hen/Desktop/Kandidat/Dataset_ljudfiler';
-sheet = '/Users/97hen/Desktop/Kandidat/Klasser';
+%datafolder = '/Users/97hen/Desktop/Kandidat/Dataset_ljudfiler';
+%sheet = '/Users/97hen/Desktop/Kandidat/Klasser';
 
 a = dir(fullfile(datafolder,'*.wav'));
-sheetNums = xlsread(sheet, 'B:B');    %l?ser in klasserna fr?n excellfil
+sheetClass = xlsread(sheet, 'B:B');    %l?ser in klasserna fr?n excellfil
+sheetPI = xlsread(sheet, 'C:C');    %l?ser in klasserna fr?n excellfil
 
 %% L?s in varje ljudfil och g?r inledande analys
 % bl a r?kna ut vilken kanal som ?r dominant. 
@@ -135,7 +136,8 @@ for i = 1:length(a);
                 pos = cat(4,pos,cutout);
                 p = size(index,2) +1;
                 index(1,p) = i;
-                index(2,p) = sheetNums(i);
+                index(2,p) = sheetClass(i);
+                index(3,p) = sheetPI(i);
             end
 
             end
