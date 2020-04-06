@@ -36,7 +36,7 @@ end
 
 %% Plottar och f?rgkodar efter klass
 
-figure(7);
+figure(12);
 hold on
 for dot = 1:length(index)
 
@@ -51,9 +51,9 @@ switch index(2,dot) %letar upp klass i index
         plot(code(dot,1), code(dot,2),'+r');
 
         
-%text(code(:,1),code(:,2), string(index));
+%text(code(dot,1),code(dot,2), string(index(3,dot)));
 end
-text(code(:,1),code(:,2), string(index(3,:)));
+%text(code(:,1),code(:,2), string(index(3,:)));
 end
 
 title('Using two dimensions');
