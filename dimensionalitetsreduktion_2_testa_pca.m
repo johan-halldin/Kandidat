@@ -90,7 +90,7 @@ title('Using two dimensions');
 
 figure(10);
 hold off;
-plot3(code(:,1),code(:,2),code(:,3),'b*');
+plot(code(:,1),code(:,2),'b*');
 text(code(:,1),code(:,2), code(:,3), string(index(3,:)));    % plottar pulsatilt index
 %text(code(:,1),code(:,2), code(:,3), string(index(1,:)));   %plottar fr?n vilken inspelning v?rdena kommer ifr?n
 %text(code(:,1),code(:,2), code(:,3), string(index));
