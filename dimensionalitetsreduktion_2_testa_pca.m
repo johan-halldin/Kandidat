@@ -28,10 +28,12 @@ figure(6);
 subplot(4,4,1);
 colormap(gray);
 imagesc(reshape(model.data_mean,50,150));
+axis xy;
 for k = 1:min(KK,15);
     subplot(4,4,k+1);
     colormap(gray);
     imagesc(reshape(model.u(:,k),50,150));
+    axis xy;
 end
 
 %% Plottar och f?rgkodar efter klass
@@ -57,29 +59,6 @@ end
 end
 
 title('Using two dimensions');
-%% Plottar och f?rgkodar efter klass i tre dimensioner
-
-figure(8);
-
-hold all
-for dot = 1:length(index)
-
-switch index(2,dot) %letar upp klass i index
-    case 0
-        plot3(code(dot,1), code(dot,2), code(dot,3),'+g'); %Normalt v?rde
-    case 1
-        plot3(code(dot,1),code(dot,2), code(dot,3),'+b');
-    case 2
-        plot3(code(dot,1), code(dot,2) ,code(dot,3),'+y');
-    case 3
-        plot3(code(dot,1), code(dot,2), code(dot,3),'+r');
-
-%text(code(:,1),code(:,2), string(index));
-end
-end
-
-title('Using three dimensions');
-hold off
 
 %% Visualize code for each image
 
