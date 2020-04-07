@@ -60,6 +60,15 @@ end
 
 title('Using two dimensions');
 
+%% Plottar i tre dimensioner
+
+figure(8);
+
+hold off
+plot3(code(:,1), code(:,2), code(:,3),'+b'); %Normalt v?rde
+ 
+title('Using three dimensions');
+
 %% Visualize code for each image
 
 figure(9);
