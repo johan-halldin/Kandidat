@@ -57,29 +57,14 @@ end
 end
 
 title('Using two dimensions');
-%% Plottar och f?rgkodar efter klass i tre dimensioner
+%% Plottar i tre dimensioner
 
 figure(8);
 
-hold all
-for dot = 1:length(index)
-
-switch index(2,dot) %letar upp klass i index
-    case 0
-        plot3(code(dot,1), code(dot,2), code(dot,3),'+g'); %Normalt v?rde
-    case 1
-        plot3(code(dot,1),code(dot,2), code(dot,3),'+b');
-    case 2
-        plot3(code(dot,1), code(dot,2) ,code(dot,3),'+y');
-    case 3
-        plot3(code(dot,1), code(dot,2), code(dot,3),'+r');
-
-%text(code(:,1),code(:,2), string(index));
-end
-end
-
-title('Using three dimensions');
 hold off
+plot3(code(:,1), code(:,2), code(:,3),'+b'); %Normalt v?rde
+ 
+title('Using three dimensions');
 
 %% Visualize code for each image
 
