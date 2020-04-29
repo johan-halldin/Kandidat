@@ -65,6 +65,7 @@ end
 xlabel('First dimension');
 ylabel('Second dimension');
 title('Using two dimensions');
+
 %% Plottar i tre dimensioner
 
 figure(8);
