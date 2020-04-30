@@ -4,7 +4,7 @@
 % code -> pos_reconstruct is decoding or unpacking of code
 
 %% Do the PCA
-KK = 10; % using 40 singular components
+KK = 20; % using 40 singular components
 model = kalle_make_pca(pos,KK);
 
 %% calculate dimensionality reduction for data
@@ -28,17 +28,21 @@ figure(6);
 subplot(4,4,1);
 colormap(gray);
 imagesc(reshape(model.data_mean,50,150));
+title('Mean');
 axis xy;
 for k = 1:min(KK,15);
     subplot(4,4,k+1);
     colormap(gray);
     imagesc(reshape(model.u(:,k),50,150));
+    str = ['Dimension ', num2str(k)];
+    title(str);
     axis xy;
 end
 
+
 %% Plottar och f?rgkodar efter klass
 
-figure(12);
+figure(7);
 hold on
 for dot = 1:length(index)
 
@@ -58,6 +62,8 @@ end
 %text(code(:,1),code(:,2), string(index(3,:)));
 end
 
+xlabel('First dimension');
+ylabel('Second dimension');
 title('Using two dimensions');
 
 %% Plottar i tre dimensioner
@@ -72,13 +78,13 @@ title('Using three dimensions');
 %% Visualize code for each image
 
 figure(9);
-% plot(code(:,1),code(:,2),'*b');
-text(code(:,1),code(:,2), string(index(1,:)));  %plottar fr?n vilken inspelning v?rdena kommer ifr?n
+plot(code(:,1),code(:,2),'*b');
+text(code(:,1),code(:,2), string(index(3,:)));  %plottar fr?n vilken inspelning v?rdena kommer ifr?n
 title('Using two dimensions');
 
 figure(10);
 hold off;
-plot(code(:,1),code(:,2),'b*');
+plot3(code(:,1),code(:,2), code(:,3), 'b*');
 text(code(:,1),code(:,2), code(:,3), string(index(3,:)));    % plottar pulsatilt index
 %text(code(:,1),code(:,2), code(:,3), string(index(1,:)));   %plottar fr?n vilken inspelning v?rdena kommer ifr?n
 %text(code(:,1),code(:,2), code(:,3), string(index));
@@ -112,14 +118,17 @@ title('Using two dimensions');
 %for k = 1:size(pos,4);
 for k = 50:50:500;
     figure(12);
+    
     subplot(1,2,1);
     colormap(gray);
     imagesc(pos(:,:,:,k));
     title('Original');
+    axis xy;
     subplot(1,2,2);
     colormap(gray);
     imagesc(pos_reconstruct(:,:,:,k));
     title(['Reprojection using ' num2str(KK) ' compponents.']);
+    axis xy;
     pause(1);
 end
 
