@@ -70,13 +70,13 @@ pos_reconstruct = predict(decoder,reshape(code',1,1,KK,size(code,1)));
 
 figure(7);
 plot(code(:,1),code(:,2),'*');
-text(double(code(:,1)),double(code(:,2)), string(index));
+text(double(code(:,1)),double(code(:,2)), string(index(2,:)));
 title('Using two dimensions');
 
 figure(8);
 hold off;
 plot3(code(:,1),code(:,2),code(:,3),'b*');
-text(double(code(:,1)),double(code(:,2)),double(code(:,3)), string(index));
+text(double(code(:,1)),double(code(:,2)),double(code(:,3)), string(index(2,:)));
 title('Using three dimensions');
 
 %% Compare original with reconstruction
@@ -96,8 +96,8 @@ for k = 50:50:500;
 end
 
 
-%%
-mm = mean(code);
+%%  
+mm = mean(code);   
 ss = std(code);
 ee = eye(KK);
 figure(11);
