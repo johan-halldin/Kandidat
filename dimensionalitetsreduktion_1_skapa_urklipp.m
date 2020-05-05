@@ -7,7 +7,7 @@
 
 %Johan
 datafolder = 'C:\Users\Johan\OneDrive\Skrivbord\Dataset_ljudfiler';
-sheet = 'C:\Users\Johan\OneDrive\Skrivbord\Kandidat\Klasser';
+sheet = 'C:\Users\Johan\OneDrive\Skrivbord\Kandidat\Klasser2';
 
 %Henrik
 %datafolder = 'C:\Users\henri\Desktop\Kandidat\Dataset_ljudfiler';
