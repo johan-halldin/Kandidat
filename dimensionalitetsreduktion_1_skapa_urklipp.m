@@ -6,12 +6,12 @@
 %datafolder = '/Users/kalle/Documents/projekt/kand_2020_fosterdiagnostik/dataset2';
 
 %Johan
-datafolder = 'C:\Users\Johan\OneDrive\Skrivbord\Dataset_ljudfiler';
-sheet = 'C:\Users\Johan\OneDrive\Skrivbord\Kandidat\Klasser';
+%datafolder = 'C:\Users\Johan\OneDrive\Skrivbord\Dataset_ljudfiler';
+%sheet = 'C:\Users\Johan\OneDrive\Skrivbord\Kandidat\Klasser';
 
 %Henrik
-%datafolder = 'C:\Users\henri\Desktop\Kandidat\Dataset_ljudfiler';
-% sheet = 'C:\Users\henri\Desktop\Kandidat\Klasser2';  %OBS! Nytt filnamn
+datafolder = 'C:\Users\henri\Desktop\Kandidat\Dataset_ljudfiler';
+sheet = 'C:\Users\henri\Desktop\Kandidat\Klasser2';  %OBS! Nytt filnamn
 
 a = dir(fullfile(datafolder,'*.wav'));
 sheetClass = xlsread(sheet, 'B:B');    %l?ser in klasserna fr?n excellfil
@@ -97,8 +97,8 @@ for i = 1:length(a);
     facit(i).period = median(diff(facit(i).lokmax));
 end;
 
-%% H?r g?rs urklippen. Jag skapara bilder av storlek 50 x 150 
-% f?r varje topp. Dessa sparas i en variable 
+%% H?r g?rs urklippen. Jag skapara bilder av storlek 50 x 150
+% f?r varje topp. Dessa sparas i en variable
 % pos av storlek 50 x 150 x 1 x N
 % d?r N ?r antalet urklippta toppar. Cirka 1400 stycken
 
@@ -111,39 +111,44 @@ index = [];
 for i = 1:length(a);
     
     if (i ~= 40)
-    [y,fs]=audioread(fullfile(datafolder,a(i).name));
-    y = y(:,facit(i).kanal(1));
-    s=spectrogram(y,1024,1008,1024);
-    x = abs(s(1:50,:));
-    
-    w2 = round(facit(i).period*0.6);
-    w = w2*2;
-    %for mid = (w/2+10):(length(x)-w/2-10),
-    %end
-    if 1,
-        for mid = facit(i).lokmax(2:(end-1)),
-            % provar att hoppa ?ver f?rsta och sista
-            % sista tar inte h?nsyn till att sista delen av signalen ?r tyst
-            if (mid>(w2+10)) & (mid< (length(x)-w2-10)), 
-                cutout = x(1:50,(mid-w2):(mid+w2-1));
-                cutout = conv2(cutout,ones(1,20)/20,'same');
-                cutout = cutout(:,10:20:end);
-                cutout = cutout/max(cutout(:));
-                cutout = imresize(cutout,[50 150]);
-                figure(3); clf;
-                imagesc(cutout);
-                axis xy
-                title([num2str(i) ' - ' num2str(mid)]);
-                % pause(0.1);
+        [y,fs]=audioread(fullfile(datafolder,a(i).name));
+        y = y(:,facit(i).kanal(1));
+        s=spectrogram(y,1024,1008,1024);
+        x = abs(s(1:50,:));
+        
+        w2 = round(facit(i).period*0.6);
+        w = w2*2;
+        %for mid = (w/2+10):(length(x)-w/2-10),
+        %end
+        if 1,
+            for mid = facit(i).lokmax(2:(end-1)),
+                % provar att hoppa ?ver f?rsta och sista
+                % sista tar inte h?nsyn till att sista delen av signalen ?r tyst
+                if (mid>(w2+10)) & (mid< (length(x)-w2-10)),
+                    cutout = x(1:50,(mid-w2):(mid+w2-1));
+                    cutout = conv2(cutout,ones(1,20)/20,'same');
+                    cutout = cutout(:,10:20:end);
+                    cutout = cutout/max(cutout(:));
+                    cutout = imresize(cutout,[50 150]);
+                    figure(3); clf;
+                    imagesc(cutout);
+                    axis xy
+                    title([num2str(i) ' - ' num2str(mid)]);
+                    % pause(0.1);
+                    
+                    
+                    pos = cat(4,pos,cutout);
+                    p = size(index,2) +1;
+                    index(1,p) = i;
+                    index(2,p) = sheetClass(i);
+                    index(3,p) = sheetPI(i);
+                    index(4,p) = sheetPD(i);
+                    index(5,p) = sheetODFD(i);
+                    index(6,p) = sheetFCAO(i);
+                    index(7,p) = sheetNICU(i);
+                    
+                end
                 
-                
-                pos = cat(4,pos,cutout);
-                p = size(index,2) +1;
-                index(1,p) = i;
-                index(2,p) = sheetClass(i);
-                index(3,p) = sheetPI(i);
-            end
-
             end
         end
     end
@@ -166,3 +171,4 @@ figure(4);
 subplot(1,1,1)
 colormap(gray);
 montage(pos);
+axis xy;
