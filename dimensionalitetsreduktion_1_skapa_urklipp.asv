@@ -6,20 +6,20 @@
 %datafolder = '/Users/kalle/Documents/projekt/kand_2020_fosterdiagnostik/dataset2';
 
 %Johan
-datafolder = 'C:\Users\Johan\OneDrive\Skrivbord\Dataset_ljudfiler';
-sheet = 'C:\Users\Johan\OneDrive\Skrivbord\Kandidat\Klasser2';
+%datafolder = 'C:\Users\Johan\OneDrive\Skrivbord\Dataset_ljudfiler';
+%sheet = 'C:\Users\Johan\OneDrive\Skrivbord\Kandidat\Klasser';
 
 %Henrik
-%datafolder = 'C:\Users\henri\Desktop\Kandidat\Dataset_ljudfiler';
-% sheet = 'C:\Users\henri\Desktop\Kandidat\Klasser2';  %OBS! Nytt filnamn
+datafolder = 'C:\Users\henri\Desktop\Kandidat\Dataset_ljudfiler';
+sheet = 'C:\Users\henri\Desktop\Kandidat\Klasser';
 
 a = dir(fullfile(datafolder,'*.wav'));
 sheetClass = xlsread(sheet, 'B:B');    %l?ser in klasserna fr?n excellfil
 sheetPI = xlsread(sheet, 'C:C');    %l?ser in Pulsativt Index fr?n excellfil
 sheetPD = xlsread(sheet, 'F:F');    %l?ser in Perinatal Death fr?n excellfil
 sheetODFD = xlsread(sheet, 'G:G');    %l?ser in ODFD fr?n excellfil
-sheetFCAO = xlsread(sheet, 'H:H');    
-sheetNICU = xlsread(sheet, 'I:I');    
+sheetFC = xlsread(sheet, 'H:H');    %l?ser in Perinatal Death fr?n excellfil
+sheet
 
 %% L?s in varje ljudfil och g?r inledande analys
 % bl a r?kna ut vilken kanal som ?r dominant. 
