@@ -6,8 +6,8 @@
 %datafolder = '/Users/kalle/Documents/projekt/kand_2020_fosterdiagnostik/dataset2';
 
 %Johan
-%datafolder = 'C:\Users\Johan\OneDrive\Skrivbord\Dataset_ljudfiler';
-%sheet = 'C:\Users\Johan\OneDrive\Skrivbord\Kandidat\Klasser';
+datafolder = 'C:\Users\Johan\OneDrive\Skrivbord\Dataset_ljudfiler';
+sheet = 'C:\Users\Johan\OneDrive\Skrivbord\Kandidat\Klasser2';
 
 %Henrik
 datafolder = 'C:\Users\henri\Desktop\Kandidat\Dataset_ljudfiler';
@@ -105,6 +105,14 @@ end;
 
 pos = zeros(50,150,1,0);
 %neg = zeros(32,32,1,0);
+
+%1-index p? inspelning
+%2-BFC klass
+%3-PI
+%4-PD
+%5-ODFD
+%6-FCAO
+%7-NICU
 index = [];
 
 
@@ -148,7 +156,6 @@ for i = 1:length(a);
                     index(7,p) = sheetNICU(i);
                     
                 end
-                
             end
         end
     end
