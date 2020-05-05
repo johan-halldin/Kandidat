@@ -105,45 +105,52 @@ end;
 
 pos = zeros(50,150,1,0);
 %neg = zeros(32,32,1,0);
+
+%1-index p? inspelning
+%2-BFC klass
+%3-PI
+%4-PD
+%5-ODFD
+%6-FCAO
+%7-NICU
 index = [];
 
 
 for i = 1:length(a);
     
     if (i ~= 40)
-    [y,fs]=audioread(fullfile(datafolder,a(i).name));
-    y = y(:,facit(i).kanal(1));
-    s=spectrogram(y,1024,1008,1024);
-    x = abs(s(1:50,:));
-    
-    w2 = round(facit(i).period*0.6);
-    w = w2*2;
-    %for mid = (w/2+10):(length(x)-w/2-10),
-    %end
-    if 1,
-        for mid = facit(i).lokmax(2:(end-1)),
-            % provar att hoppa ?ver f?rsta och sista
-            % sista tar inte h?nsyn till att sista delen av signalen ?r tyst
-            if (mid>(w2+10)) & (mid< (length(x)-w2-10)), 
-                cutout = x(1:50,(mid-w2):(mid+w2-1));
-                cutout = conv2(cutout,ones(1,20)/20,'same');
-                cutout = cutout(:,10:20:end);
-                cutout = cutout/max(cutout(:));
-                cutout = imresize(cutout,[50 150]);
-                figure(3); clf;
-                imagesc(cutout);
-                axis xy
-                title([num2str(i) ' - ' num2str(mid)]);
-                % pause(0.1);
-                
-                
-                pos = cat(4,pos,cutout);
-                p = size(index,2) +1;
-                index(1,p) = i;
-                index(2,p) = sheetClass(i);
-                index(3,p) = sheetPI(i);
-            end
-
+        [y,fs]=audioread(fullfile(datafolder,a(i).name));
+        y = y(:,facit(i).kanal(1));
+        s=spectrogram(y,1024,1008,1024);
+        x = abs(s(1:50,:));
+        
+        w2 = round(facit(i).period*0.6);
+        w = w2*2;
+        %for mid = (w/2+10):(length(x)-w/2-10),
+        %end
+        if 1,
+            for mid = facit(i).lokmax(2:(end-1)),
+                % provar att hoppa ?ver f?rsta och sista
+                % sista tar inte h?nsyn till att sista delen av signalen ?r tyst
+                if (mid>(w2+10)) & (mid< (length(x)-w2-10)),
+                    cutout = x(1:50,(mid-w2):(mid+w2-1));
+                    cutout = conv2(cutout,ones(1,20)/20,'same');
+                    cutout = cutout(:,10:20:end);
+                    cutout = cutout/max(cutout(:));
+                    cutout = imresize(cutout,[50 150]);
+                    figure(3); clf;
+                    imagesc(cutout);
+                    axis xy
+                    title([num2str(i) ' - ' num2str(mid)]);
+                    % pause(0.1);
+                    
+                    
+                    pos = cat(4,pos,cutout);
+                    p = size(index,2) +1;
+                    index(1,p) = i;
+                    index(2,p) = sheetClass(i);
+                    index(3,p) = sheetPI(i);
+                end
             end
         end
     end
