@@ -10,8 +10,8 @@ datafolder = 'C:\Users\Johan\OneDrive\Skrivbord\Dataset_ljudfiler';
 sheet = 'C:\Users\Johan\OneDrive\Skrivbord\Kandidat\Klasser2';
 
 %Henrik
-datafolder = 'C:\Users\henri\Desktop\Kandidat\Dataset_ljudfiler';
-sheet = 'C:\Users\henri\Desktop\Kandidat\Klasser2';  %OBS! Nytt filnamn
+%datafolder = 'C:\Users\henri\Desktop\Kandidat\Dataset_ljudfiler';
+%sheet = 'C:\Users\henri\Desktop\Kandidat\Klasser2';  %OBS! Nytt filnamn
 
 a = dir(fullfile(datafolder,'*.wav'));
 sheetClass = xlsread(sheet, 'B:B');    %l?ser in klasserna fr?n excellfil

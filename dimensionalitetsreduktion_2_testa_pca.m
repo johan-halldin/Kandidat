@@ -79,7 +79,7 @@ title('Using three dimensions');
 
 figure(9);
 plot(code(:,1),code(:,2),'*b');
-text(code(:,1),code(:,2), string(index(3,:)));  %plottar fr?n vilken inspelning v?rdena kommer ifr?n
+text(code(:,1),code(:,2), string(index(3,:))); 
 title('Using two dimensions');
 
 figure(10);
@@ -133,3 +133,25 @@ for k = 50:50:500;
 end
 
 
+%% Plottar och f?rgkodar efter outcome
+
+figure(13);        
+hold on
+for dot = 1:length(index)
+
+switch index(7,dot) %letar upp klass i index
+    case 0
+        plot(code(dot,1), code(dot,2),'+g'); %Normalt v?rde
+    case 1
+        plot(code(dot,1),code(dot,2),'+r');
+
+
+        
+%text(code(dot,1),code(dot,2), string(index(3,dot)));
+end
+%text(code(:,1),code(:,2), string(index(3,:)));
+end
+
+xlabel('First dimension');
+ylabel('Second dimension');
+title('Neonatal Intensive Care Unit');

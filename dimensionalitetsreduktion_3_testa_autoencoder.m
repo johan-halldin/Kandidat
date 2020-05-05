@@ -106,12 +106,14 @@ for k = 1:KK;
     colormap(gray);
     meanimage = predict(decoder,reshape(mm,[1 1 KK]));
     imagesc(meanimage);
+    axis xy
     for th = linspace(0,2*pi,100);
         subplot(1,2,2);
         colormap(gray);
         meanimage = predict(decoder,reshape(mm+cos(th)*ss.*ee(k,:),[1 1 KK]));
         imagesc(meanimage);
         title(['Mode: ' num2str(k) ' of ' num2str(3)]);
+        axis xy
         pause(0.05);
     end;
     pause;
