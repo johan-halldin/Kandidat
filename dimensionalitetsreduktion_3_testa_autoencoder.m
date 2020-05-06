@@ -6,7 +6,7 @@
 
 %% Define deep learning architecture
 % here layers 2-8 are the encoding and layers 9-13 are the decoding
-KK = 3;
+KK = 10;
 
 layers = [
     imageInputLayer([50 150 1])
@@ -79,20 +79,22 @@ plot3(code(:,1),code(:,2),code(:,3),'b*');
 text(double(code(:,1)),double(code(:,2)),double(code(:,3)), string(index(2,:)));
 title('Using three dimensions');
 
-%% Compare original with reconstruction
+clear a%% Compare original with reconstruction
 
 %for k = 1:size(pos,4);
-for k = 50:50:500;
+for k = 50:50:1000;
     figure(9);
     subplot(1,2,1);
     colormap(gray);
     imagesc(pos(:,:,:,k));
     title('Original');
+    axis xy
     subplot(1,2,2);
     colormap(gray);
     imagesc(pos_reconstruct(:,:,:,k));
     title(['Reprojection using ' num2str(KK) ' compponents.']);
-    pause(0.5);
+    axis xy
+    pause(0.4);
 end
 
 
@@ -112,10 +114,10 @@ for k = 1:KK;
         colormap(gray);
         meanimage = predict(decoder,reshape(mm+cos(th)*ss.*ee(k,:),[1 1 KK]));
         imagesc(meanimage);
-        title(['Mode: ' num2str(k) ' of ' num2str(3)]);
+        title(['Mode: ' num2str(k) ' of ' num2str(KK)]);
         axis xy
-        pause(0.05);
+        pause(0.003);
     end;
-    pause;
+    %pause;
 end;
 
