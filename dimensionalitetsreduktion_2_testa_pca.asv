@@ -133,18 +133,27 @@ end
 
 %% Compare original with reconstruction in one subplot
 figure(20);
-k = 0;
-sgtitle('Comparison of the original image versus the reconstructed');
-for i =1:2:16;
-    k = k + 50;
-    subplot(4,4,i);
-    colormap(gray);
-    imagesc(pos(:,:,:,k));
-    axis xy;
-    subplot(4,4,i+1);
-    colormap(gray);
-    imagesc(pos_reconstruct(:,:,:,k));
-    axis xy;
+for i =1:4;
+    
+
+
+
+end
+
+
+for i = 1:4;
+    subplot(2,2,i);
+    for k = 50:50:500;    
+        colormap(gray);
+        imagesc(pos(:,:,:,k));
+        title('Original');
+        axis xy;
+        subplot(1,2,2);
+        colormap(gray);
+        imagesc(pos_reconstruct(:,:,:,k));
+        title(['Reprojection using ' num2str(KK) ' compponents.']);
+        axis xy;
+    end
 end
 
 
