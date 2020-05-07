@@ -21,7 +21,7 @@ figure(5);
 plot(diag(model.s),'*');
 xlabel('Mode nr');
 ylabel('Standard deviation');
-
+title('Variance in each dimension');
 %% Visualize mean and mode images
 
 figure(6);
