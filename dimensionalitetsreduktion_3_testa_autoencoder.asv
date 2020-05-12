@@ -6,7 +6,7 @@
 
 %% Define deep learning architecture
 % here layers 2-8 are the encoding and layers 9-13 are the decoding
-KK = 10;
+KK = 25;
 
 layers = [
     imageInputLayer([50 150 1])
@@ -63,7 +63,7 @@ blubb2 = predict(decoder,reshape(blubb(1,:),[1 1 KK]))
 
 code = predict(encoder,pos);
 
-pos_reconstruct = predict(decoder,reshape(code',1,1,KK,size(code,1)));
+pos_reconstructAE = predict(decoder,reshape(code',1,1,KK,size(code,1)));
 
 
 %% Visualize code for each image

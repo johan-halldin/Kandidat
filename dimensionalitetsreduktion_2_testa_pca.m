@@ -4,7 +4,7 @@
 % code -> pos_reconstruct is decoding or unpacking of code
 
 %% Do the PCA
-KK = 20; % using 40 singular components
+KK = 10; % using 40 singular components
 model = kalle_make_pca(pos,KK);
 
 %% calculate dimensionality reduction for data
@@ -25,13 +25,13 @@ title('Variance in each dimension');
 %% Visualize mean and mode images
 
 figure(6);
-subplot(4,4,1);
+subplot(3,2,1);
 colormap(gray);
 imagesc(reshape(model.data_mean,50,150));
 title('Mean');
 axis xy;
 for k = 1:min(KK,15);
-    subplot(4,4,k+1);
+    subplot(3,2,k+1);
     colormap(gray);
     imagesc(reshape(model.u(:,k),50,150));
     str = ['Dimension ', num2str(k)];
@@ -134,16 +134,21 @@ end
 %% Compare original with reconstruction in one subplot
 figure(20);
 k = 0;
-sgtitle('Comparison of the original image versus the reconstructed');
+A = 1;
 for i =1:2:16;
-    k = k + 50;
-    subplot(4,4,i);
+    k = k + 40;
+    subplot(3,2,i);
     colormap(gray);
     imagesc(pos(:,:,:,k));
+    str1 = ['A', num2str(A)];
+    title(str1);
     axis xy;
-    subplot(4,4,i+1);
+    subplot(3,2,i+1);
     colormap(gray);
     imagesc(pos_reconstruct(:,:,:,k));
+    str2 = ['B', num2str(A)];
+    title(str2);
+    A = A+1;
     axis xy;
 end
 
