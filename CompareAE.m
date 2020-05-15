@@ -6,8 +6,8 @@ pos_reconstruct = predict(decoder,reshape(code',1,1,KK,size(code,1)));
 
 % de ?r inte l?ngre sorterade i "viktigast" ordning
 figure(1);
-firstDim = 22;
-secondDim = 24;
+firstDim = 1;
+secondDim = 4;
 hold on
 for dot = 1:length(index)
     

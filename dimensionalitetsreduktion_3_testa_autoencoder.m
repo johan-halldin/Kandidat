@@ -6,7 +6,7 @@
 
 %% Define deep learning architecture
 % here layers 2-8 are the encoding and layers 9-13 are the decoding
-KK = 25;
+KK = 10;
 
 layers = [
     imageInputLayer([50 150 1])

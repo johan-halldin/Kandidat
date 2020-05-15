@@ -4,7 +4,7 @@
 % code -> pos_reconstruct is decoding or unpacking of code
 
 %% Do the PCA
-KK = 20; % using 40 singular components
+KK = 10; % using 40 singular components
 model = kalle_make_pca(pos,KK);
 
 %% calculate dimensionality reduction for data
@@ -155,3 +155,22 @@ end
 xlabel('First dimension');
 ylabel('Second dimension');
 title('Neonatal Intensive Care Unit');
+
+%% Plottar och f?rgkodar efter klass OUTCOME
+
+figure(14);
+hold on
+for dot = 1:length(index)
+
+switch index(6,dot) %letar upp klass i index
+    case 0
+        plot(code(dot,1), code(dot,2),'+g'); %Normalt v?rde
+    case 1
+        plot(code(dot,1),code(dot,2),'+r');
+
+end 
+end
+
+xlabel('First dimension');
+ylabel('Second dimension');
+title('Color coded outcome');

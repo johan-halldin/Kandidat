@@ -13,6 +13,14 @@ sheet = 'C:\Users\Johan\OneDrive\Skrivbord\Kandidat\Klasser2';
 %datafolder = 'C:\Users\henri\Desktop\Kandidat\Dataset_ljudfiler';
 %sheet = 'C:\Users\henri\Desktop\Kandidat\Klasser2';  %OBS! Nytt filnamn
 
+%1-index p? inspelning
+%2-BFC klass
+%3-PI
+%4-PD
+%5-ODFD
+%6-FCAO
+%7-NICU
+
 a = dir(fullfile(datafolder,'*.wav'));
 sheetClass = xlsread(sheet, 'B:B');    %l?ser in klasserna fr?n excellfil
 sheetPI = xlsread(sheet, 'C:C');    %l?ser in Pulsativt Index fr?n excellfil
