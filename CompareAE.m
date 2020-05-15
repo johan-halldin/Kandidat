@@ -50,7 +50,7 @@ mm = mean(code);
 ss = std(code);
 ee = eye(KK);
 figure(3);
-for k = 1:KK;
+for k = 1:3 %KK
     subplot(1,2,1);
     colormap(gray);
     meanimage = predict(decoder,reshape(mm,[1 1 KK]));
@@ -73,7 +73,7 @@ figure(4);
 upperPI = 1.4;
 lowerPI = 1;
 
-for column = 1:KK
+for column = 1:3 %KK
     hold on
     for dot = 1:length(index)
         
@@ -95,3 +95,50 @@ for column = 1:KK
     clf
 end
 
+%%
+%% Compare Points with same PI in one lower dimension. OUTCOME
+figure(14);
+upperPI = 1.4;
+lowerPI = 1;
+column1 = 1;
+column2 = 2;
+
+for column = 1:3    
+    subplot(1,2,2)
+    hold on
+    for dot = 1:length(index)
+        
+        if (lowerPI < index(3,dot) && index(3,dot) < upperPI)
+            switch index(5,dot)
+                case 1
+                    plot(code(dot,column),0,'r+');
+                    
+                case 0
+                    plot(code(dot,column),0,'g+');
+            end
+            set(gca,'ytick',[])
+            
+        end
+    end
+    plot(code(:,column),0.01,'b+');
+    set(gca,'ytick',[])
+    xlabel('this dimension');
+    title(string(column));
+    
+    subplot(1,2,1)
+    hold on
+    for dot = 1:length(index)
+        
+        if (lowerPI < index(3,dot) && index(3,dot) < upperPI)
+            plot(code(dot,1),code(dot,2),'b+');
+        else
+             plot(code(dot,1),code(dot,2),'y+');
+        end
+       
+    end
+    xlabel('First dimension');
+    ylabel('Second dimension');
+    suptitle('Recordings from group of similar PI colorcoded by outcome in X dimension');
+    pause;
+    clf
+end

@@ -11,7 +11,7 @@ figure(1);
 upperPI = 1.2;
 lowerPI = 0.9;
 
-for column = 1:20
+for column = 1:3
     % subplot(3,3,i);
     hold on
     
@@ -33,7 +33,7 @@ figure(2);
 upperPI = 1.2;
 lowerPI = 0.9;
 
-for column = 1:20
+for column = 1:3
     % subplot(3,3,i);
     hold on
     
