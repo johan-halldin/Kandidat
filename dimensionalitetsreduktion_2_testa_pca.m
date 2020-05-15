@@ -21,17 +21,17 @@ figure(5);
 plot(diag(model.s),'*');
 xlabel('Mode nr');
 ylabel('Standard deviation');
-
+title('Variance in each dimension');
 %% Visualize mean and mode images
 
 figure(6);
-subplot(4,4,1);
+subplot(3,2,1);
 colormap(gray);
 imagesc(reshape(model.data_mean,50,150));
 title('Mean');
 axis xy;
 for k = 1:min(KK,15);
-    subplot(4,4,k+1);
+    subplot(3,2,k+1);
     colormap(gray);
     imagesc(reshape(model.u(:,k),50,150));
     str = ['Dimension ', num2str(k)];
@@ -118,7 +118,6 @@ title('Using two dimensions');
 %for k = 1:size(pos,4);
 for k = 50:50:500;
     figure(12);
-    
     subplot(1,2,1);
     colormap(gray);
     imagesc(pos(:,:,:,k));
@@ -130,6 +129,27 @@ for k = 50:50:500;
     title(['Reprojection using ' num2str(KK) ' compponents.']);
     axis xy;
     pause(1);
+end
+
+%% Compare original with reconstruction in one subplot
+figure(20);
+k = 0;
+A = 1;
+for i =1:2:16;
+    k = k + 40;
+    subplot(3,2,i);
+    colormap(gray);
+    imagesc(pos(:,:,:,k));
+    str1 = ['A', num2str(A)];
+    title(str1);
+    axis xy;
+    subplot(3,2,i+1);
+    colormap(gray);
+    imagesc(pos_reconstruct(:,:,:,k));
+    str2 = ['B', num2str(A)];
+    title(str2);
+    A = A+1;
+    axis xy;
 end
 
 
